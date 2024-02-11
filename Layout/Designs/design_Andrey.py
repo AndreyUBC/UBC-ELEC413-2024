@@ -96,8 +96,70 @@ def design_Andrey(cell, cell_y, inst_wg1, inst_wg2, inst_wg3, waveguide_type):
     inst_taper9 = connect_cell(inst_taper7, 'opt2', cell_taper, 'opt2')
     inst_taper9.transform(Trans(-width,height))
 
-    connect_pins_with_waveguide(inst_taper4, 'opt', inst_taper5, 'opt', waveguide_type=waveguide_type)
+    connect_pins_with_waveguide(inst_taper8, 'opt', inst_taper9, 'opt', waveguide_type=waveguide_type)
+
+    inst_taper10 = connect_cell(inst_taper9, 'opt2', cell_taper, 'opt2')
+    inst_taper10.transform(Trans(width,0))
     
+    connect_pins_with_waveguide(inst_taper9, 'opt2', inst_taper10, 'opt2', waveguide_type=waveguide_type_mm)
+
+    inst_taper11 = connect_cell(inst_taper9, 'opt2', cell_taper, 'opt2')
+    inst_taper11.transform(Trans(width,height))
+
+    connect_pins_with_waveguide(inst_taper10, 'opt', inst_taper11, 'opt', waveguide_type=waveguide_type)
+
+    inst_taper12 = connect_cell(inst_taper11, 'opt2', cell_taper, 'opt2')
+    inst_taper12.transform(Trans(-width,0))
+
+    connect_pins_with_waveguide(inst_taper11, 'opt2', inst_taper12, 'opt2', waveguide_type=waveguide_type_mm)
+
+    inst_taper13 = connect_cell(inst_taper11, 'opt2', cell_taper, 'opt2')
+    inst_taper13.transform(Trans(-width,height))
+
+    connect_pins_with_waveguide(inst_taper12, 'opt', inst_taper13, 'opt', waveguide_type=waveguide_type)
+    
+    inst_taper14 = connect_cell(inst_taper13, 'opt2', cell_taper, 'opt2')
+    inst_taper14.transform(Trans(width,0))
+   
+    connect_pins_with_waveguide(inst_taper13, 'opt2', inst_taper14, 'opt2', waveguide_type=waveguide_type_mm)
+
+    inst_taper15 = connect_cell(inst_taper13, 'opt2', cell_taper, 'opt2')
+    inst_taper15.transform(Trans(width,height))
+
+    connect_pins_with_waveguide(inst_taper14, 'opt', inst_taper15, 'opt', waveguide_type=waveguide_type)
+
+    inst_taper16 = connect_cell(inst_taper15, 'opt2', cell_taper, 'opt2')
+    inst_taper16.transform(Trans(-width,0))
+
+    connect_pins_with_waveguide(inst_taper15, 'opt2', inst_taper16, 'opt2', waveguide_type=waveguide_type_mm)
+
+    inst_taper17 = connect_cell(inst_taper15, 'opt2', cell_taper, 'opt2')
+    inst_taper17.transform(Trans(-width,height))
+
+    connect_pins_with_waveguide(inst_taper16, 'opt', inst_taper17, 'opt', waveguide_type=waveguide_type)
+
+    inst_taper18 = connect_cell(inst_taper17, 'opt2', cell_taper, 'opt2')
+    inst_taper18.transform(Trans(width,0))
+    
+    connect_pins_with_waveguide(inst_taper17, 'opt2', inst_taper18, 'opt2', waveguide_type=waveguide_type_mm)
+
+    inst_taper19 = connect_cell(inst_taper17, 'opt2', cell_taper, 'opt2')
+    inst_taper19.transform(Trans(width,height))
+
+    connect_pins_with_waveguide(inst_taper18, 'opt', inst_taper19, 'opt', waveguide_type=waveguide_type)
+
+    inst_taper20 = connect_cell(inst_taper19, 'opt2', cell_taper, 'opt2')
+    inst_taper20.transform(Trans(-width,0))
+
+    connect_pins_with_waveguide(inst_taper19, 'opt2', inst_taper20, 'opt2', waveguide_type=waveguide_type_mm)
+
+    inst_taper21 = connect_cell(inst_taper19, 'opt2', cell_taper, 'opt2')
+    inst_taper21.transform(Trans(-width,height))
+
+    connect_pins_with_waveguide(inst_taper20, 'opt', inst_taper21, 'opt', waveguide_type=waveguide_type)
+
+
+
 
 
     # instantiate Bragg grating (attached to the first Bragg grating)
