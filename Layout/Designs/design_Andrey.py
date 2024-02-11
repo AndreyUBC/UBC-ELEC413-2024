@@ -86,11 +86,11 @@ def design_Andrey(cell, cell_y, inst_wg1, inst_wg2, inst_wg3, waveguide_type):
     
     try:
         connect_pins_with_waveguide(inst_y1, 'opt3', inst_wg3, 'opt1', 
-            waveguide_type='Strip TE 1310 nm, w=385 nm (core-clad)', 
+            waveguide_type='Strip TE 1310 nm, w=350 nm (core-clad)', 
             turtle_A = [10,-90,215,-90,350,90] )
     except:    
         connect_pins_with_waveguide(inst_y1, 'opt3', inst_wg3, 'opt1', 
-            waveguide_type='Strip TE 1310 nm, w=350 nm (core-clad)', 
+            waveguide_type='Strip TE 1310 nm, w=385 nm (core-clad)', 
             turtle_A = [10,-90,215,-90,350,-90] )
 
 
