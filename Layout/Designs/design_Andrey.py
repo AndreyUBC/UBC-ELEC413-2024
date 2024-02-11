@@ -8,7 +8,8 @@ def design_Andrey(cell, cell_y, inst_wg1, inst_wg2, inst_wg3, waveguide_type):
     ly = cell.layout()
     library = ly.technology().name
 
-    
+    cell_taper = ly.create_cell('ebeam_taper_350nm_2000nm_te1310', library)
+
     #####
     # designer circuit:
 
@@ -38,16 +39,9 @@ def design_Andrey(cell, cell_y, inst_wg1, inst_wg2, inst_wg3, waveguide_type):
         'grating_period': 0.272,
         'corrugation_width': 0.05,
         'wg_width': 0.35,
-        'sinusoidal': True})
+        'sinusoidal': False})
     if not cell_bragg:
         raise Exception ('Cannot load Bragg grating cell; please check the script carefully.')
-
-    cell_taper = ly.create_cell('ebeam_pcell_taper', library, {
-        'wg_width1': 0.350,
-        'wg_width2': 0.385,
-            })
-    if not cell_taper:
-        raise Exception ('Cannot load taper cell; please check the script carefully.')
 
     # instantiate y-branch (attached to input waveguide)
     inst_y1 = connect_cell(inst_wg1, 'opt2', cell_y, 'opt2')
@@ -85,6 +79,7 @@ def design_Andrey(cell, cell_y, inst_wg1, inst_wg2, inst_wg3, waveguide_type):
     '''
     # connect_pins_with_waveguide(inst_y1, 'opt3', inst_wg3, 'opt1', waveguide_type=waveguide_type)
     
+    '''
 
     # Good, outer Waveguide
     try:
@@ -106,4 +101,6 @@ def design_Andrey(cell, cell_y, inst_wg1, inst_wg2, inst_wg3, waveguide_type):
             waveguide_type='Strip TE 1310 nm, w=350 nm (core-clad)', 
             turtle_A = [325,90,20,90,345,-90,20,-90,300,90,20,90,300,-90,20,-90,300,90,20,90,300,-90,20,-90,300,90,20,90,300,-90,20,-90,300,90,20,90,300,-90,20,-90] )
 
+            
+    '''
     return inst_wg1, inst_wg2, inst_wg3
