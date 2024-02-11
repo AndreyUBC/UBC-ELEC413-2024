@@ -53,7 +53,7 @@ def design_Andrey(cell, cell_y, inst_wg1, inst_wg2, inst_wg3, waveguide_type):
     inst_y1 = connect_cell(inst_wg1, 'opt2', cell_y, 'opt2')
     
     # instantiate Bragg grating (attached to y branch)
-    inst_bragg1 = connect_cell(inst_y1, 'opt', cell_bragg, 'opt1')
+    inst_bragg1 = connect_cell(inst_y1, 'opt1', cell_bragg, 'opt1')
 
     # instantiate taper from 350 nm waveguide y-branch to 385 nm Bragg grating
     inst_taper1 = connect_cell(inst_bragg1, 'opt2', cell_taper, 'opt')
