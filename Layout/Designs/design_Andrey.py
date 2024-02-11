@@ -76,8 +76,28 @@ def design_Andrey(cell, cell_y, inst_wg1, inst_wg2, inst_wg3, waveguide_type):
     inst_taper5 = connect_cell(inst_taper3, 'opt2', cell_taper, 'opt2')
     inst_taper5.transform(Trans(-width,height))
 
+    connect_pins_with_waveguide(inst_taper4, 'opt', inst_taper5, 'opt', waveguide_type=waveguide_type)
+    #############################Fist Line
+    inst_taper6 = connect_cell(inst_taper5, 'opt2', cell_taper, 'opt2')
+    inst_taper6.transform(Trans(width,0))
+    # Connects t1 and t2
+    connect_pins_with_waveguide(inst_taper5, 'opt2', inst_taper6, 'opt2', waveguide_type=waveguide_type_mm)
 
+    inst_taper7 = connect_cell(inst_taper5, 'opt2', cell_taper, 'opt2')
+    inst_taper7.transform(Trans(width,height))
 
+    connect_pins_with_waveguide(inst_taper6, 'opt', inst_taper7, 'opt', waveguide_type=waveguide_type)
+
+    inst_taper8 = connect_cell(inst_taper7, 'opt2', cell_taper, 'opt2')
+    inst_taper8.transform(Trans(-width,0))
+
+    connect_pins_with_waveguide(inst_taper7, 'opt2', inst_taper8, 'opt2', waveguide_type=waveguide_type_mm)
+
+    inst_taper9 = connect_cell(inst_taper7, 'opt2', cell_taper, 'opt2')
+    inst_taper9.transform(Trans(-width,height))
+
+    connect_pins_with_waveguide(inst_taper4, 'opt', inst_taper5, 'opt', waveguide_type=waveguide_type)
+    
 
 
     # instantiate Bragg grating (attached to the first Bragg grating)
