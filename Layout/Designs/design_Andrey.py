@@ -68,6 +68,16 @@ def design_Andrey(cell, cell_y, inst_wg1, inst_wg2, inst_wg3, waveguide_type):
 
     connect_pins_with_waveguide(inst_taper2, 'opt', inst_taper3, 'opt', waveguide_type=waveguide_type)
 
+    inst_taper4 = connect_cell(inst_taper3, 'opt2', cell_taper, 'opt2')
+    inst_taper4.transform(Trans(-width,0))
+
+    connect_pins_with_waveguide(inst_taper3, 'opt2', inst_taper4, 'opt2', waveguide_type=waveguide_type_mm)
+
+    inst_taper5 = connect_cell(inst_taper3, 'opt2', cell_taper, 'opt2')
+    inst_taper5.transform(Trans(-width,height))
+
+
+
 
 
     # instantiate Bragg grating (attached to the first Bragg grating)
@@ -81,9 +91,9 @@ def design_Andrey(cell, cell_y, inst_wg1, inst_wg2, inst_wg3, waveguide_type):
     # connect_pins_with_waveguide(inst_y1, 'opt3', inst_wg3, 'opt1', waveguide_type=waveguide_type)
 
     # instantiate taper from 350 nm waveguide y-branch to 385 nm Bragg grating
-    inst_taper4 = connect_cell(inst_bragg2, 'opt1', cell_taper, 'opt2')
+    inst_taper22 = connect_cell(inst_bragg2, 'opt1', cell_taper, 'opt2')
 
-    connect_pins_with_waveguide(inst_taper4, 'opt', inst_wg2, 'opt1', waveguide_type=waveguide_type)
+    connect_pins_with_waveguide(inst_taper22, 'opt', inst_wg2, 'opt1', waveguide_type=waveguide_type)
     
     '''
     make a long waveguide, back and forth, 
@@ -103,11 +113,11 @@ def design_Andrey(cell, cell_y, inst_wg1, inst_wg2, inst_wg3, waveguide_type):
     try:
         connect_pins_with_waveguide(inst_y1, 'opt3', inst_wg3, 'opt1', 
             waveguide_type='Strip TE 1310 nm, w=350 nm (core-clad)', 
-            turtle_A = [10,-90,215,-90,350,90] )
+            turtle_A = [10,-90,215,-90,355,90] )
     except:    
         connect_pins_with_waveguide(inst_y1, 'opt3', inst_wg3, 'opt1', 
             waveguide_type='Strip TE 1310 nm, w=385 nm (core-clad)', 
-            turtle_A = [10,-90,215,-90,350,-90] )
+            turtle_A = [10,-90,215,-90,355,-90] )
 
     '''
     # Good, Inner Waveguide
