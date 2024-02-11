@@ -60,8 +60,15 @@ def design_Andrey(cell, cell_y, inst_wg1, inst_wg2, inst_wg3, waveguide_type):
     
     inst_taper2 = connect_cell(inst_taper1, 'opt2', cell_taper, 'opt2')
     inst_taper2.transform(Trans(width,0))
-    # Connects two tapers
+    # Connects t1 and t2
     connect_pins_with_waveguide(inst_taper1, 'opt2', inst_taper2, 'opt2', waveguide_type=waveguide_type_mm)
+
+    inst_taper3 = connect_cell(inst_taper1, 'opt2', cell_taper, 'opt2')
+    inst_taper3.transform(Trans(width,height))
+
+    connect_pins_with_waveguide(inst_taper2, 'opt', inst_taper3, 'opt', waveguide_type=waveguide_type)
+
+
 
     # instantiate Bragg grating (attached to the first Bragg grating)
     inst_bragg2 = connect_cell(inst_bragg1, 'opt2', cell_bragg, 'opt2')
