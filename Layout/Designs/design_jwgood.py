@@ -1,7 +1,7 @@
 from pya import *
 
  
-def design_chill(cell, cell_y, inst_wg1, inst_wg2, inst_wg3, waveguide_type):
+def design_jwgood(cell, cell_y, inst_wg1, inst_wg2, inst_wg3, waveguide_type):
     
     # load functions
     from SiEPIC.scripts import connect_pins_with_waveguide, connect_cell
@@ -35,8 +35,8 @@ def design_chill(cell, cell_y, inst_wg1, inst_wg2, inst_wg3, waveguide_type):
     cell_bragg = ly.create_cell('ebeam_pcell_bragg_grating', library, {
         'number_of_periods':50,
         'grating_period': 0.277,
-        'corrugation_width': 0.05,
-        'wg_width': 0.385,
+        'corrugation_width': 0.050,
+        'wg_width': 0.350,
         'sinusoidal': False})
     if not cell_bragg:
         raise Exception ('Cannot load Bragg grating cell; please check the script carefully.')
@@ -85,10 +85,10 @@ def design_chill(cell, cell_y, inst_wg1, inst_wg2, inst_wg3, waveguide_type):
     try:
         connect_pins_with_waveguide(inst_bragg1, 'opt2', inst_bragg2, 'opt2', 
             waveguide_type='Strip TE 1310 nm, w=385 nm (core-clad)', 
-            turtle_A = [325,90,20,90,350,-90,20,-90,300,90,20,90,300,-90,20,-90,225,90,20,90,225,-90,20,-90,225,90,20,90,225,-90,20,-90,350,-90,70,-90,20,-90,50,90,80,90,20,90,60,-90,20,-90,60,90,20,90] )
+            turtle_A = [250,90,20,90,250,-90,20,-90,250,90,20,90,250,-90,20,-90,230,90,20,90,230,-90,20,-90,230,90,20,90,230,-90,20,-90,240,-90] )
     except:    
         connect_pins_with_waveguide(inst_bragg1, 'opt2', inst_bragg2, 'opt2', 
-            waveguide_type='Strip TE 1310 nm, w=350 nm (core-clad)', 
+            waveguide_type='Strip TE 1310 nm, w=385 nm (core-clad)', 
             turtle_A = [250,90,20,90,250,-90,20,-90,250,90,20,90,250,-90,20,-90] )
 
     return inst_wg1, inst_wg2, inst_wg3

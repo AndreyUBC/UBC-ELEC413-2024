@@ -1,7 +1,14 @@
+'''
+Design by Arnan Kabir, for UBC ELEC 413, 2023
+Project 2
+
+'''
+
+
 from pya import *
 
  
-def design_chill(cell, cell_y, inst_wg1, inst_wg2, inst_wg3, waveguide_type):
+def design_arnankabir(cell, cell_y, inst_wg1, inst_wg2, inst_wg3, waveguide_type):
     
     # load functions
     from SiEPIC.scripts import connect_pins_with_waveguide, connect_cell
@@ -33,11 +40,11 @@ def design_chill(cell, cell_y, inst_wg1, inst_wg2, inst_wg3, waveguide_type):
     # load the cells from the PDK
     # choose appropriate parameters
     cell_bragg = ly.create_cell('ebeam_pcell_bragg_grating', library, {
-        'number_of_periods':50,
-        'grating_period': 0.277,
-        'corrugation_width': 0.05,
-        'wg_width': 0.385,
-        'sinusoidal': False})
+        'number_of_periods':22,
+        'grating_period': 0.279,
+        'corrugation_width': 0.014,
+        'wg_width': 0.350,
+        'sinusoidal': True})
     if not cell_bragg:
         raise Exception ('Cannot load Bragg grating cell; please check the script carefully.')
 
@@ -73,22 +80,18 @@ def design_chill(cell, cell_y, inst_wg1, inst_wg2, inst_wg3, waveguide_type):
     connect_pins_with_waveguide(inst_taper4, 'pin1', inst_wg2, 'opt1', waveguide_type=waveguide_type)
     
     '''
-    make a long waveguide, back and forth, 
-    target 0.2 nm FSR assuming ng = 4
-    > wavelength=1270e-9; ng=4; fsr=0.2e-9;
-    > L = wavelength**2/2/ng/fsr
-    > L * 1e6
-    > 1000 [microns]
+    > L = 2000[microns]
     using "turtle" routing
     https://github.com/SiEPIC/SiEPIC-Tools/wiki/Scripted-Layout#adding-a-waveguide-between-components
     '''
     try:
         connect_pins_with_waveguide(inst_bragg1, 'opt2', inst_bragg2, 'opt2', 
             waveguide_type='Strip TE 1310 nm, w=385 nm (core-clad)', 
-            turtle_A = [325,90,20,90,350,-90,20,-90,300,90,20,90,300,-90,20,-90,225,90,20,90,225,-90,20,-90,225,90,20,90,225,-90,20,-90,350,-90,70,-90,20,-90,50,90,80,90,20,90,60,-90,20,-90,60,90,20,90] )
+            turtle_A = [310,90,20,90,310,-90,20,-90,310,90,20,90,310,-90,20,-90,200,90,20,90,200,-90,20,-90,240,-90]  )
     except:    
         connect_pins_with_waveguide(inst_bragg1, 'opt2', inst_bragg2, 'opt2', 
             waveguide_type='Strip TE 1310 nm, w=350 nm (core-clad)', 
-            turtle_A = [250,90,20,90,250,-90,20,-90,250,90,20,90,250,-90,20,-90] )
+            turtle_A = [310,90,20,90,310,-90,20,-90,310,90,20,90,310,-90,20,-90,200,90,20,90,200,-90,20,-90,240,-90] )
 
     return inst_wg1, inst_wg2, inst_wg3
+

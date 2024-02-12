@@ -1,7 +1,7 @@
 from pya import *
 
  
-def design_andrew1(cell, cell_y, inst_wg1, inst_wg2, inst_wg3, waveguide_type):
+def design_sameenislam(cell, cell_y, inst_wg1, inst_wg2, inst_wg3, waveguide_type):
     
     # load functions
     from SiEPIC.scripts import connect_pins_with_waveguide, connect_cell
@@ -33,9 +33,9 @@ def design_andrew1(cell, cell_y, inst_wg1, inst_wg2, inst_wg3, waveguide_type):
     # load the cells from the PDK
     # choose appropriate parameters
     cell_bragg = ly.create_cell('ebeam_pcell_bragg_grating', library, {
-        'number_of_periods':60,
-        'grating_period': 0.270,
-        'corrugation_width': 0.08,
+        'number_of_periods':20,
+        'grating_period': 0.274,
+        'corrugation_width': 0.065,
         'wg_width': 0.385,
         'sinusoidal': True})
     if not cell_bragg:
@@ -82,7 +82,6 @@ def design_andrew1(cell, cell_y, inst_wg1, inst_wg2, inst_wg3, waveguide_type):
     using "turtle" routing
     https://github.com/SiEPIC/SiEPIC-Tools/wiki/Scripted-Layout#adding-a-waveguide-between-components
     '''
-
     try:
         connect_pins_with_waveguide(inst_bragg1, 'opt2', inst_bragg2, 'opt2', 
             waveguide_type='Strip TE 1310 nm, w=385 nm (core-clad)', 
@@ -93,3 +92,4 @@ def design_andrew1(cell, cell_y, inst_wg1, inst_wg2, inst_wg3, waveguide_type):
             turtle_A = [250,90,20,90,250,-90,20,-90,250,90,20,90,250,-90,20,-90] )
 
     return inst_wg1, inst_wg2, inst_wg3
+
